@@ -6,7 +6,7 @@ package com.example.innerclassdemo;
  * 2：创建内部类的静态生成方法，使用的时候可以直接外部类.方法获得内部类
  * 3：内部类提供属性set方法，返回当前对象
  * 4：内部类提供生成外部类方法，方法内部调用1
- * 实用场景，属性比较多的dto对象，不需要频繁的new对象和一个个的去set属性
+ * 实用场景，属性比较多的dto对象，不需要频繁的new对象和一个个的去set属性。
  * Created by huiyunfei on 2019/4/12.
  */
 public class AliyunTest {
