@@ -28,3 +28,7 @@ demo文件夹是一般应用场景
 **threaddemo**
 
 模拟多线程抢票
+
+**com.example.restdemo**
+
+简单的restful接口demo以及各种插件集成
