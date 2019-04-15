@@ -1,0 +1,8 @@
+
+#启动前加载的配置
+spring:
+  profiles:
+    active: ${DEPLOY}
+    #active: dev
+  application:
+    name: restTest

@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class CheckTest {
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
 
         Method[] m = MyMethod.class.getDeclaredMethods();
         Arrays.stream(m).forEach(method -> {
@@ -31,6 +31,7 @@ public class CheckTest {
             }
         });
     }
+
 
 }
 

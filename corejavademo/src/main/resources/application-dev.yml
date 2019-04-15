@@ -1,0 +1,25 @@
+
+spring:
+  #数据源
+  datasource:
+    url: jdbc:mysql://localhost:3306/test??useUnicode=true&amp;characterEncoding=UTF-8
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+
+#mybatis配置。
+#注：通常，若mybatis配置信息较少，只是针对基本配置无需复杂配置，则只需在application.yml文件中配置即可，否则最好配置在 mybatis-config.xml中
+mybatis:
+  typeAliasesPackage: com.example.restdemo.entity
+  mapperLocations: classpath:mapper/*.xml
+  #configLocation: classpath:/mybatis-config.xml
+
+#控制台打印sql
+logging:
+    level:
+      com:
+        example:
+          restdemo:
+            mapper: DEBUG
