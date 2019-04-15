@@ -64,11 +64,17 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
-        <!-- access -->
+        <!-- access 接口直接使用resultObj对象-->
         <dependency>
             <groupId>com.bjj</groupId>
             <artifactId>access</artifactId>
             <version>${access.ver}</version>
+        </dependency>
+        <!-- Druid数据库连接池组件 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.18</version>
         </dependency>
     </dependencies>
     <build>
