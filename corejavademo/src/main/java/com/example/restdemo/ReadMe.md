@@ -95,3 +95,7 @@ spring:
   #spring.datasource.useGlobalDataSourceStat: true
   ###############以上为配置druid添加的配置########################################
 5-3:添加DruidDBConfig配置文件和DruidConfig配置文件
+
+6：配置swagger
+
+7：配置自定义过滤器

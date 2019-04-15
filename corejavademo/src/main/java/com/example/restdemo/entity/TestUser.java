@@ -1,27 +1,18 @@
 package com.example.restdemo.entity;
 
+import lombok.Data;
+
 /**
  * Created by huiyunfei on 2019/4/12.
  */
+@Data//lombok注解，可以省略set get等等代码
 public class TestUser {
 
     private int id;
 
-    private String name;
+    private String username;
 
-    public int getId() {
-        return id;
-    }
+    private String password;
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

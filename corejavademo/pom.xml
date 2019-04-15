@@ -45,7 +45,7 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring-boot}</version>
         </dependency>
-        <!-- lombok依赖-->
+        <!-- lombok依赖 可以减少大量的模块代码-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

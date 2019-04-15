@@ -1,27 +1,24 @@
 package com.example.restdemo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * Created by huiyunfei on 2019/4/12.
  */
+@Data
+@Builder//为类提供一个内部的Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TestUserModel {
 
     private int id;
 
-    private String name;
+    private String username;
 
-    public int getId() {
-        return id;
-    }
+    private String password;
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
