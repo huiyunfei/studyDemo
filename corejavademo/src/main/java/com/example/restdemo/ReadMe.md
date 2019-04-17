@@ -115,7 +115,7 @@ spring:
 9-1：新建拦截器类implements HandlerInterceptor，并重写三个方法
 9-2：提供拦截器配置类extends WebMvcConfigurerAdapter
 
-执行顺序： 
+执行顺序：   
 request-->filterPre(进入过滤器，执行chain.doFilter之前)-->service(springmvc的doService方法)-->dispatcher（springmvc请求分发）
 -->preHandle（进入拦截器，执行controller之前）-->controller-->postHandle（执行完controller，return view之前）
 -->afterCompletion（return view之后，filter返回客户端之前）-->filterAfter（服务端完全执行完，返回给客户端之前）
