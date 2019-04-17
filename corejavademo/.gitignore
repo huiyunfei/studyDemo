@@ -13,7 +13,6 @@ HELP.md
 
 ### IntelliJ IDEA ###
 .idea
-./.idea/
 *.iws
 *.iml
 *.ipr
@@ -28,3 +27,6 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+/.idea/
+
+*/target/
