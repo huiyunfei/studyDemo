@@ -99,3 +99,24 @@ spring:
 6：配置swagger
 
 7：配置自定义过滤器
+依赖于servlet容器,基于函数回调，主要用于对请求做预处理，判断是否登陆，请求URL权限，过滤字符等，缺点是一个过滤器实例只能在容器初始化时调用一次。
+7-1：直接在类上使用@Component @WebFilter注解使用，执行顺序按文件名的首字母来
+7-2：添加在configuration中使用bean注解（支持使用第三方过滤器）MyFilterConfig
+
+8:配置自定义监听器
+依赖于servlet容器，Listeeshi是servlet规范中定义的一种特殊类。
+用于监听servletContext、HttpSession和servletRequest等域对象的创建和销毁事件。
+监听域对象的属性发生修改的事件。用于在事件发生前、发生后做一些必要的处理。一般是获取在线人数等业务需求。
+8-1：直接在类上使用@Component @WebListener注解使用。
+8-2：添加在configuration中使用bean注解 
+
+9：配置自定义拦截器
+依赖于SpringMVC框架，基于java反射，缺点只能对controller请求进行拦截，属于面向切面编程（AOP）的一种方法级别的运用，在调用方法前、方法后做操作
+9-1：新建拦截器类implements HandlerInterceptor，并重写三个方法
+9-2：提供拦截器配置类extends WebMvcConfigurerAdapter
+
+执行顺序：
+request-->filterPre(进入过滤器，执行chain.doFilter之前)-->service(springmvc的doService方法)-->dispatcher（springmvc请求分发）
+-->preHandle（进入拦截器，执行controller之前）-->controller-->postHandle（执行完controller，return view之前）
+-->afterCompletion（return view之后，filter返回客户端之前）-->filterAfter（服务端完全执行完，返回给客户端之前）
+
