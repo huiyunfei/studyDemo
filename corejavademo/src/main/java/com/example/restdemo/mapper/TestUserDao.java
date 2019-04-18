@@ -1,7 +1,10 @@
 package com.example.restdemo.mapper;
 
+import com.example.restdemo.entity.TestGroup;
 import com.example.restdemo.entity.TestUser;
 import com.example.restdemo.model.TestUserModel;
+
+import java.util.List;
 
 /**
  * Created by huiyunfei on 2019/4/12.
@@ -24,4 +27,5 @@ public interface TestUserDao {
 
     void update(TestUserModel userModel);
 
+    List<TestGroup> findGroupById(int groupNo);
 }

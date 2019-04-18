@@ -30,8 +30,6 @@ public class MyFilterTwo implements Filter {
         HttpServletRequest req=(HttpServletRequest)servletRequest;
         String uri=req.getRequestURI();
         log.info("MyFilterTwo当前请求uri {}",uri);
-        String name = req.getParameter("testParameter2");
-        log.info("MyFilterOne name{}",name);
         //链路 直接传给下一个过滤器
         filterChain.doFilter(servletRequest, servletResponse);
     }

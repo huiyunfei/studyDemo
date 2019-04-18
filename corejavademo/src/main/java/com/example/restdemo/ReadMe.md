@@ -115,8 +115,11 @@ spring:
 9-1：新建拦截器类implements HandlerInterceptor，并重写三个方法
 9-2：提供拦截器配置类extends WebMvcConfigurerAdapter
 
-执行顺序：   
+执行顺序： 
 request-->filterPre(进入过滤器，执行chain.doFilter之前)-->service(springmvc的doService方法)-->dispatcher（springmvc请求分发）
 -->preHandle（进入拦截器，执行controller之前）-->controller-->postHandle（执行完controller，return view之前）
 -->afterCompletion（return view之后，filter返回客户端之前）-->filterAfter（服务端完全执行完，返回给客户端之前）
 
+10：添加mybatis一对多关系
+10-1：可以不修改原始pojo，添加一那一方的关联pojo,继承原始pojo，添加关联关系List<TestUser> testUsers;
+10-2：mapper文件添加一那一方的collection标签，column是多那一方表中保存一这一方的列名，javaType是ArrayList，ofType是多方的pojo，select是find多方By一方列名

@@ -6,7 +6,21 @@
         <result column="id" property="id"/>
         <result column="name" property="name"/>
     </resultMap>
-
+    <!--一对多的map里边要写上多方的collection，column为一方的关联列-->
+    <resultMap id ="groupMap" type="com.example.restdemo.entity.TestGroupUserObj">
+        <result column="id" property="id"/>
+        <result column="groupName" property="groupName"/>
+        <result column="groupNo" property="groupNo"/>
+        <collection property="testUsers" column="groupNo" javaType="ArrayList" ofType="com.example.restdemo.entity.TestUser"
+                    select="selectUserByGroupNo">
+        </collection>
+    </resultMap>
+    <select id="selectUserByGroupNo" resultMap="userMap">
+        select * from test_user where groupNo=#{groupNo}
+    </select>
+    <select id="findGroupById" resultMap="groupMap">
+        select * from test_group where groupNo=#{groupNo}
+    </select>
     <select id = "findById" resultMap="userMap">
         select
         id,

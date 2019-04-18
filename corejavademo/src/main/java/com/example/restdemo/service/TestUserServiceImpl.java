@@ -1,11 +1,14 @@
 package com.example.restdemo.service;
 
+import com.example.restdemo.entity.TestGroup;
 import com.example.restdemo.entity.TestUser;
 import com.example.restdemo.mapper.TestUserDao;
 import com.example.restdemo.model.TestUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by huiyunfei on 2019/4/12.
@@ -38,5 +41,10 @@ public class TestUserServiceImpl implements TestUserService{
     public void testTrancation (TestUserModel userModel) throws Exception{
         this.testUserDao.update(userModel);
         throw new RuntimeException("发生异常了..");
+    }
+
+    @Override
+    public List<TestGroup> findGroupById(int groupNo) {
+        return testUserDao.findGroupById(groupNo);
     }
 }

@@ -30,8 +30,6 @@ public class MyFilterOne implements Filter {
         HttpServletRequest req=(HttpServletRequest)servletRequest;
         String uri=req.getRequestURI();
         log.info("MyFilterOne当前请求uri {}",uri);
-        String name = req.getParameter("testParameter1");
-        log.info("MyFilterOne userName{} }",name);
         //链路 直接传给下一个过滤器
         filterChain.doFilter(servletRequest, servletResponse);
     }

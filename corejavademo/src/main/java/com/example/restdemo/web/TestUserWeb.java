@@ -1,19 +1,25 @@
 package com.example.restdemo.web;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bjj.access.modal.ResultObj;
+import com.example.restdemo.entity.TestGroup;
 import com.example.restdemo.entity.TestUser;
 import com.example.restdemo.listener.MyListener;
 import com.example.restdemo.model.TestUserModel;
 import com.example.restdemo.service.TestUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by huiyunfei on 2019/4/12.
@@ -64,13 +70,12 @@ public class TestUserWeb {
         return "end.";
     }
 
-    @RequestMapping("/test")
-    public ResultObj test(HttpServletRequest req) {
-        String name = req.getParameter("testParameter1");
-        System.out.println("name... "+name);
+    @RequestMapping("/testMybatisCollection")
+    public ResultObj testMybatisCollection(@RequestBody JSONObject obj) {
         ResultObj result = new ResultObj();
+        List<TestGroup> groupList=this.testUserService.findGroupById(obj.getIntValue("groupNo"));
         result.setInfo(100);
-        System.out.println("test... ");
+        result.setObj(groupList);
         return result;
     }
 
