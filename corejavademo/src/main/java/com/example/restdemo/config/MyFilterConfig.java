@@ -1,5 +1,7 @@
-package com.example.restdemo.filter;
+package com.example.restdemo.config;
 
+import com.example.restdemo.filter.MyFilterOne;
+import com.example.restdemo.filter.MyFilterTwo;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;

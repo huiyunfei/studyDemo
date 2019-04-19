@@ -22,9 +22,7 @@
         select * from test_group where groupNo=#{groupNo}
     </select>
     <select id = "findById" resultMap="userMap">
-        select
-        id,
-          name
+        select *
         from
           test_user
           where id=#{id}

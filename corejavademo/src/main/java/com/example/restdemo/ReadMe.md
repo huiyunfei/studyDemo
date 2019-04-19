@@ -97,7 +97,24 @@ spring:
 5-3:添加DruidDBConfig配置文件和DruidConfig配置文件
 
 6：配置swagger
-
+6-1:配置pom文件jar
+<!-- swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+        <!-- swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+6-2:
+controller类、方法添加对应注解
+备注：遇到一个问题到现在没解决，就是自定义对象接收参数，按照其他教程都是在对象类上边添加@ApiModel注解，然后参数使用@ApiModelProperty注解，
+很奇怪，我只要一加ApiModel注解swagger上就一个参数也看不到，去掉就正常。匪夷所思。。。
+json对象之前我们都手动转为封装类就是为了swagger，没找到方便操作的自定义jsonobject和map接收参数的注解。后续有的话再补充
 7：配置自定义过滤器
 依赖于servlet容器,基于函数回调，主要用于对请求做预处理，判断是否登陆，请求URL权限，过滤字符等，缺点是一个过滤器实例只能在容器初始化时调用一次。
 7-1：直接在类上使用@Component @WebFilter注解使用，执行顺序按文件名的首字母来

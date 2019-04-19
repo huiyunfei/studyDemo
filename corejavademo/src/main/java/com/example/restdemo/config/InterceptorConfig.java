@@ -1,4 +1,4 @@
-package com.example.restdemo.interceptor;
+package com.example.restdemo.config;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -15,7 +15,7 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**");
+        //registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**");
     }
 
 }
