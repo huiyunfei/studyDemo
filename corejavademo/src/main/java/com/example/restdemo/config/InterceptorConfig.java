@@ -11,11 +11,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootConfiguration
 public class InterceptorConfig extends WebMvcConfigurerAdapter {
 //@Autowired
-//private MyInterceptor myinterceptor
+//private MyCglibInterceptor myinterceptor
 
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        //registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**");
+        //registry.addInterceptor(new MyCglibInterceptor()).addPathPatterns("/**");
     }
 
 }

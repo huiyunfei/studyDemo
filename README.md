@@ -32,3 +32,10 @@ demo文件夹是一般应用场景
 **com.example.restdemo**
 
 简单的restful接口demo以及各种插件集成
+
+**com.example.invocation**
+
+java代理模式
+1.JDK动态代理是实现了被代理对象的接口，HumapProxy.java。cglib是继承了被代理对象。MyInterceptor.java
+2.JDK和Cglib都是在运行期生成字节码，JDK是直接写Class字节码，Cglib使用ASM框架写Class字节码，Cglib代理实现更复杂，生成代理类比JDK效率低。
+3.JDK调用代理方法，是通过反射机制调用，Cglib是通过FastClass机制直接调用方法，Cglib执行效率更高。
