@@ -34,6 +34,11 @@ spring:
   #spring.datasource.useGlobalDataSourceStat: true
   ###############以上为配置druid添加的配置########################################
 
+##es地址
+  #spring.data.elasticsearch.cluster-nodes = 127.0.0.1:9300
+  data:
+    elasticsearch:
+      cluster-nodes: 127.0.0.1:9300
 
 #mybatis配置。
 #注：通常，若mybatis配置信息较少，只是针对基本配置无需复杂配置，则只需在application.yml文件中配置即可，否则最好配置在 mybatis-config.xml中

@@ -7,14 +7,9 @@ import com.example.restdemo.entity.TestUser;
 import com.example.restdemo.listener.MyListener;
 import com.example.restdemo.model.TestUserModel;
 import com.example.restdemo.service.TestUserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,25 +24,18 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/testUser")
-@Api(description = "测试用户接口")
 public class TestUserWeb {
 
 
     @Autowired
     private TestUserService testUserService;
 
-    @ApiOperation(value = "根据id获取用户信息",notes  ="测试少参数get请求path上")
-    @ApiImplicitParam(name = "id", value = "用户id", paramType = "path", required = true, dataType = "Integer")
     @RequestMapping(value="/findById/{id}",method= RequestMethod.GET)
     public TestUser findById(@PathVariable(value="id") Integer id){
         log.info("findById in：{} ",id);
         return testUserService.findById(id);
     }
 
-    @ApiOperation(value = "新增用户",notes = "测试post对象请求")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "testUserModel", value = "用户实体对象",required = true, dataType = "TestUserModel")
-    })
     @RequestMapping(value="/insert",method= RequestMethod.POST)
     public ResultObj insert(@RequestBody TestUserModel testUserModel){
         ResultObj obj=new ResultObj();
@@ -55,7 +43,6 @@ public class TestUserWeb {
         return obj;
     }
 
-    @ApiIgnore//使用该注解忽略这个API
     @RequestMapping("/testTrancation")
     public ResultObj testTrancation(@RequestBody TestUserModel userModel){
 
@@ -71,7 +58,6 @@ public class TestUserWeb {
     @Autowired
     private DataSource dataSource;
 
-    @ApiIgnore//使用该注解忽略这个API
     @RequestMapping("/dataSource")
     public String dataSource() {
         try {
@@ -84,7 +70,6 @@ public class TestUserWeb {
         }
         return "end";
     }
-    @ApiIgnore//使用该注解忽略这个API
     @RequestMapping(value="/testMybatisCollection",method=RequestMethod.POST)
     public ResultObj testMybatisCollection(@RequestBody JSONObject obj) {
         ResultObj result = new ResultObj();
@@ -94,7 +79,6 @@ public class TestUserWeb {
         return result;
     }
 
-    @ApiIgnore//使用该注解忽略这个API
     @RequestMapping("/testSession")
     public ResultObj testSession(HttpServletRequest request) {
         System.out.println("当前在线人数："+ MyListener.online);

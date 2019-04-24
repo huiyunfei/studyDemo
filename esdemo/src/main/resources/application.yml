@@ -1,0 +1,11 @@
+#\u5F00\u542F Elasticsearch \u4ED3\u5E93(\u9ED8\u8BA4\u503C:true)
+spring:
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-nodes: 127.0.0.1:9300
+      cluster-name: elasticsearch
+  #\u9ED8\u8BA4 9300 \u662F Java \u5BA2\u6237\u7AEF\u7684\u7AEF\u53E3\u30029200 \u662F\u652F\u6301 Restful HTTP \u7684\u63A5\u53E3
+# ES\u8BBE\u7F6E\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4
+#spring.data.elasticsearch.properties.transport.tcp.connect_timeout=120s
