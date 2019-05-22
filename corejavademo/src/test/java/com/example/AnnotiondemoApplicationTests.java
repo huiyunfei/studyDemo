@@ -20,6 +20,7 @@ import java.util.*;
 //@ContextConfiguration(locations = {"classpath:application*.yml"})
 public class AnnotiondemoApplicationTests {
 
+
     @Test
     public void contextLoads() {
         System.out.println(123);
@@ -65,4 +66,19 @@ public class AnnotiondemoApplicationTests {
         System.out.println(num);
     }
 
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

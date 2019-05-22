@@ -28,7 +28,8 @@ public class EsBlogServiceImpl implements IEsBlogService {
     private IEsBlogRepository esBlogRepository;
     @Override
     public Page<EsBlog> getEsBlogByKeys(String keyword, Pageable pageable) {
-        Sort sort = new Sort(Sort.Direction.DESC,"read_size","comment_size","like_size");
+        Sort sort = new Sort(Sort.Direction.DESC,"createTime").and(new Sort(Sort.Direction.DESC, "id"));
+        //Sort sort = new Sort(Sort.Direction.DESC,"read_size","comment_size","like_size");
         if (pageable.getSort() == null) {
             pageable = new PageRequest(pageable.getPageNumber(), pageable.getPageSize(), sort);
         }
@@ -40,7 +41,7 @@ public class EsBlogServiceImpl implements IEsBlogService {
 
         //使用 Elasticsearch API QueryBuilder
         NativeSearchQueryBuilder aNativeSearchQueryBuilder = new NativeSearchQueryBuilder();
-        aNativeSearchQueryBuilder.withIndices("sl_blog").withTypes("doc");
+        aNativeSearchQueryBuilder.withIndices("index_blog").withTypes("doc");//.withTypes("blog");
         final BoolQueryBuilder aQuery = new BoolQueryBuilder();
         //builder下有的must、should、mustNot 相当于逻辑运算and、or、not
         aQuery.should(QueryBuilders.queryStringQuery(keyword).defaultField("title"));

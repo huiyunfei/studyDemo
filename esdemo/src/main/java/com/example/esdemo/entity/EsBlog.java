@@ -15,7 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 //映射Elasticsearch中的索引和文档类型
-@Document(indexName = "sl_blog", type = "doc")
+@Document(indexName = "index_blog", type = "blog")//, type = "blog" 7以后type已经删了
 public class EsBlog {
 
     @Id

@@ -3,8 +3,8 @@ package com.example.restdemo.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * Created by hui.yunfei@qq.com on 2019/4/15
  */
 @Slf4j
-@SpringBootConfiguration
+@Configuration
 //建议SpringbootConfiguration代替configuration
 public class DruidDBConfig {
 

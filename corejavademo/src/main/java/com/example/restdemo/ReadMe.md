@@ -140,3 +140,29 @@ request-->filterPre(进入过滤器，执行chain.doFilter之前)-->service(spri
 10：添加mybatis一对多关系
 10-1：可以不修改原始pojo，添加一那一方的关联pojo,继承原始pojo，添加关联关系List<TestUser> testUsers;
 10-2：mapper文件添加一那一方的collection标签，column是多那一方表中保存一这一方的列名，javaType是ArrayList，ofType是多方的pojo，select是find多方By一方列名
+
+11:添加redis
+pom添加 <dependency>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-starter-data-redis</artifactId>
+             </dependency>
+     
+             <dependency>
+                 <groupId>redis.clients</groupId>
+                 <artifactId>jedis</artifactId>
+                 <version>2.9.0</version>
+             </dependency>
+             
+配置文件：
+ redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+    maxWaitMillis: 10000
+    maxTotal: 200
+    testOnBorrow: true
+    testOnReturn: true
+    timeout: 3600
+    maxIdle: 200
+配置类：
+RedisConfguration

@@ -34,7 +34,18 @@ spring:
   #spring.datasource.useGlobalDataSourceStat: true
   ###############以上为配置druid添加的配置########################################
 
-##es地址
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+    maxWaitMillis: 10000
+    maxTotal: 200
+    testOnBorrow: true
+    testOnReturn: true
+    timeout: 3600
+    maxIdle: 200
+
+  ##es地址
   #spring.data.elasticsearch.cluster-nodes = 127.0.0.1:9300
   data:
     elasticsearch:
