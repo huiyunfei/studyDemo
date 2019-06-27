@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -205,5 +206,13 @@ public class RedisConfiguration {
 		redisTemplate.setValueSerializer(redisSerializer);
 		redisTemplate.setHashValueSerializer(redisSerializer);
 		redisTemplate.afterPropertiesSet();
+	}
+	@Bean
+	public DefaultRedisScript<Long> defaultRedisScript() {
+		DefaultRedisScript<Long> defaultRedisScript = new DefaultRedisScript<>();
+		defaultRedisScript.setResultType(Long.class);
+		defaultRedisScript.setScriptText("if redis.call('get', KEYS[1]) == KEYS[2] then return redis.call('del', KEYS[1]) else return 0 end");
+//        defaultRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("delete.lua")));
+		return defaultRedisScript;
 	}
 }
