@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.rabbitmq.direct.HelloSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 /**
@@ -21,8 +23,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 //@ContextConfiguration(locations = {"classpath:application*.yml"})
 public class RabbitmqTests {
 
-    @Autowired
-    private HelloSender sender;
 
     @Autowired
     @Qualifier("redisTemplate1")
@@ -37,6 +37,32 @@ public class RabbitmqTests {
         String bvalue=(String)redisTemplate1.boundValueOps("user:test:B").get();
         System.out.println("a:"+avalue+"||b:"+bvalue);
     }
+
+    @Test
+    public void test(){
+
+        Integer id=52;
+        ExecutorService executorService= Executors.newFixedThreadPool(3);
+        for(int i=0;i<3;i++){
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    synchronized (id){
+                        System.out.println(Thread.currentThread().getName()+" start");
+                        try {
+                            Thread.sleep(300);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println(Thread.currentThread().getName()+" end");
+                    }
+                }
+            });
+
+        }
+
+    }
+
 
 
 

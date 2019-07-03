@@ -5,11 +5,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * countDownLatach 在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待
+ * countDownLatach 在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。
  * Created by hui.yunfei@qq.com on 2019/6/21
  */
 public class CountDownLatachTest {
     private static final ExecutorService service=Executors.newFixedThreadPool(2);
+    //countDownLatch数量可以大于线程数。线程countDown以后可以继续执行
     private static final CountDownLatch count=new CountDownLatch(2);
 
     public static void main(String[] args) {
