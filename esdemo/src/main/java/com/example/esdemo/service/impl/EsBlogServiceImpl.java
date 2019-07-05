@@ -26,14 +26,22 @@ public class EsBlogServiceImpl implements IEsBlogService {
 
     @Autowired
     private IEsBlogRepository esBlogRepository;
+
+    //    QueryBuilders
+//    matchQuery 带分词功能的全文搜索
+//    matchPhraseQuery 不会被分词器分词，而是直接以一个短语的形式查询
+//    termQuery 不带分词功能的精准匹配
+//    rangeQuery 范围查询
+//    booleanQuery 条件组合查询
+//    idsQuery 匹配的特定数据 id 的查询
     @Override
     public Page<EsBlog> getEsBlogByKeys(String keyword, Pageable pageable) {
-        Sort sort = new Sort(Sort.Direction.DESC,"createTime").and(new Sort(Sort.Direction.DESC, "id"));
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime").and(new Sort(Sort.Direction.DESC, "id"));
         //Sort sort = new Sort(Sort.Direction.DESC,"read_size","comment_size","like_size");
         if (pageable.getSort() == null) {
             pageable = new PageRequest(pageable.getPageNumber(), pageable.getPageSize(), sort);
         }
-        if(keyword==null || "".equals(keyword)){
+        if (keyword == null || "".equals(keyword)) {
             return esBlogRepository.findAll(pageable);
         }
         //keyword 含有空格时抛异常
@@ -48,7 +56,18 @@ public class EsBlogServiceImpl implements IEsBlogService {
         aQuery.should(QueryBuilders.queryStringQuery(keyword).defaultField("content"));
 
         NativeSearchQuery nativeSearchQuery = aNativeSearchQueryBuilder.withQuery(aQuery).build();
-        Page<EsBlog> plist = elasticsearchTemplate.queryForPage(nativeSearchQuery,EsBlog.class);
-        return  plist;
+        Page<EsBlog> plist = elasticsearchTemplate.queryForPage(nativeSearchQuery, EsBlog.class);
+        return plist;
     }
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+{
+  "index": {
+    "analysis": {
+      "analyzer": {
+        "ik_pinyin_analyzer": {
+          "type": "custom",
+          "tokenizer": "ik_smart",
+          "filter": "pinyin_filter"
+        }
+      },
+      "filter": {
+        "pinyin_filter": {
+          "type": "pinyin",
+       	  "keep_first_letter":true,
+          "keep_separate_first_letter": false,
+          "keep_full_pinyin": true,
+          "keep_original": false,
+          "limit_first_letter_length": 10,
+          "lowercase": true,
+          "remove_duplicated_term": true
+        }
+      }
+    }
+  }
+}

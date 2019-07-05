@@ -1,0 +1,41 @@
+{
+	"properties": {
+		"resumeId": {
+			"type": "long"
+		},
+		"name": {
+		"type": "string",
+		"analyzer": "ik_smart",
+		"search_analyzer": "ik_smart",
+		"fields": {
+			"my_pinyin": {
+				"type": "keyword",
+				"analyzer": "ik_pinyin_analyzer",
+				"search_analyzer": "ik_pinyin_analyzer"
+			}
+		}
+		},
+		"genderString": {
+			"type": "keyword"
+		},
+		"bornString": {
+			"type": "keyword"
+		},
+		"bornInteger": {
+			"type": "integer"
+		},
+		"intentionPosition":{
+			"type": "object",
+			"properties": {
+				"positionId":{
+					"type":"integer"
+				},
+				"positionName":{
+					"type":"text",//text类型建立索引的时候会分词 2.*之前都是String，没有text和keyword
+					"analyzer": "ik_max_word",//最大颗粒的中文分词 ik_smart最粗颗粒分词
+					"search_analyzer": "ik_smart"//索引最大化，搜索最小化，保证搜索准确性
+				}
+			}
+		}
+	}
+}

@@ -24,6 +24,7 @@ public class HappenBeforeTest {
         }
     }
     static class ThreadA extends Thread{
+
         public void run(){
             a=1;
             flag=true;

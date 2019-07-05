@@ -37,4 +37,7 @@ public class BlogController {
 //        model.addAttribute("blogList", list);
         return page;
     }
+
+
 }
+
