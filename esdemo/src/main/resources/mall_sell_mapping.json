@@ -1,0 +1,44 @@
+{
+	"properties": {
+		"sellName": {
+			"type": "text",
+			"analyzer": "ik_max_word",
+			"search_analyzer": "ik_smart",
+			"fields": {
+				"my_pinyin": {
+					"type": "text",
+					"analyzer": "ik_pinyin_analyzer",
+					"search_analyzer": "ik_pinyin_analyzer"
+				}
+			}
+		},
+		"id": {
+			"type": "text"
+		},
+		"query": {
+			"properties": {
+				"match_all": {
+					"type": "object"
+				}
+			}
+		},
+		"sellStatus": {
+			"type": "keyword"
+		},
+		"sellUserStatus": {
+			"type": "keyword"
+		},
+		"sellSendPrice": {
+			"type": "double"
+		},
+		"postage": {
+			"type": "double"
+		},
+		"label": {
+			"type": "keyword"
+		},
+		"monthOrderAmount": {
+			"type": "long"
+		}
+	}
+}

@@ -77,4 +77,8 @@ public class EsdemoApplicationTests {
         //esUserRepository.delete(new EsUser());
         elasticsearchTemplate.deleteIndex(EsUser.class);
     }
+
+
+
+
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.esdemo.dao.MallInfoMapper">
+
+    <select id="listAllSell" resultType="com.example.esdemo.dao.MallInfoMapper">
+        SELECT
+            si.id, si.sellName, si.sellStatus, si.sellSendPrice, si.postage, si.label, ma.status AS sellUserStatus,
+            (
+                IFNULL((SELECT COUNT(1) FROM tb_mall_order mo WHERE mo.sellId = si.id AND mo.orderState IN ('3', '4', '5', '6') AND mo.createTime >= DATE_SUB(CURDATE(), INTERVAL 29 DAY)), 0)
+                + IFNULL(si.virtualSalesCount, 0)
+            ) AS monthOrderAmount
+        FROM tb_mall_sell_info si
+        LEFT JOIN tb_mall_merchant_account ma ON si.merchantAccountId = ma.id
+    </select>
+
+    <select id="listAllGoods" resultType="com.example.esdemo.dao.MallInfoMapper">
+        SELECT
+            si.id AS parentId, si.sellName AS parentName, si.label AS sellLabel,
+            mg.id, mg.goodsName, mg.goodsSellPrice, mg.goodsMarketPrice, mg.goodsImgUrlOne, mg.goodsStatus, mg.examineStatus, mg.isDelete,
+            mg.homeSequence, IFNULL(mg.goodsNowNumber, 0) AS goodsNowNumber, IFNULL(mg.virtualSalesCount, 0) AS virtualSalesCount
+        FROM tb_mall_goods mg LEFT JOIN tb_mall_sell_info si ON mg.sellId = si.id
+        WHERE mg.sellId > 0
+    </select>
+
+    <select id="countMonthGoodsAmount" resultType="java.lang.Integer">
+        SELECT IFNULL(SUM(od.goodsNumber), 0) AS monthGoodsAmount
+        FROM (SELECT goodsNumber, orderId FROM tb_mall_order_detail WHERE goodsId = #{goodsId}) od
+        LEFT JOIN (SELECT orderId FROM tb_mall_order WHERE orderState IN ('3', '4', '5', '6') AND createTime >= DATE_SUB(CURDATE(), INTERVAL 29 DAY)) mo USING(orderId)
+    </select>
+</mapper>

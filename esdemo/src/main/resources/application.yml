@@ -9,3 +9,29 @@ spring:
   #\u9ED8\u8BA4 9300 \u662F Java \u5BA2\u6237\u7AEF\u7684\u7AEF\u53E3\u30029200 \u662F\u652F\u6301 Restful HTTP \u7684\u63A5\u53E3
 # ES\u8BBE\u7F6E\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4
 #spring.data.elasticsearch.properties.transport.tcp.connect_timeout=120s
+
+mybatis:
+  typeAliasesPackage: com.example.esdemo.entity
+  mapperLocations: classpath:mapping/*-mapper.xml
+
+datasource:
+  url: jdbc:mysql://localhost:3306/es?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+  username: root
+  password:
+  driver-class-name: com.mysql.jdbc.Driver
+  type: org.apache.commons.dbcp2.BasicDataSource
+  dbcp2:
+    maxTotal: 1000
+    initialSize: 10
+    maxIdle: 100
+    minIdle: 50
+    maxWaitMillis: 10000
+    ###从池中取连接的时候，发现当前连接失效，再创建一个连接供当前查询使用
+    testOnBorrow: false
+    ###testWhileIdle会定时校验numTestsPerEvictionRun个连接，只要发现连接失效，就将其移除再重新创建
+    testWhileIdle: true
+    testOnReturn: false
+    minEvictableIdleTimeMillis: 7200
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: select 1
+    numTestsPerEvictionRun: 10

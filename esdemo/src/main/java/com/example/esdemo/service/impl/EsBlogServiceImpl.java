@@ -43,6 +43,7 @@ public class EsBlogServiceImpl implements IEsBlogService {
         }
         if (keyword == null || "".equals(keyword)) {
             return esBlogRepository.findAll(pageable);
+
         }
         //keyword 含有空格时抛异常
         //return esBlogRepository.findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContainingOrTagsContaining(keyword, keyword, keyword, keyword, pageable);
