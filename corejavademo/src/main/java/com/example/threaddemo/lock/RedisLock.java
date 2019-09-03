@@ -15,7 +15,7 @@ public class RedisLock {
 
     private static final Long RELEASE_SUCCESS = 1L;
 
-    private static long timeout = 5000;
+    private static long timeout = 300;
 
     public static boolean lock(String key, String value,RedisTemplate<String, Object> template) {
         long start = System.currentTimeMillis();
@@ -36,7 +36,7 @@ public class RedisLock {
 //            }
 //        }
 
-        Boolean absent = template.opsForValue().setIfAbsent(key, value, timeout, TimeUnit.MILLISECONDS);//1
+        Boolean absent = template.opsForValue().setIfAbsent(key, value, timeout, TimeUnit.SECONDS);//1
         return absent;
     }
 

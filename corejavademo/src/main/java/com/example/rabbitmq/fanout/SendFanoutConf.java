@@ -3,12 +3,11 @@ package com.example.rabbitmq.fanout;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by hui.yunfei@qq.com on 2019/5/22
  */
-@Configuration
+//@Configuration
 public class SendFanoutConf {
     @Bean(name="Amessage")
     public Queue AMessage() {

@@ -6,12 +6,11 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by hui.yunfei@qq.com on 2019/5/22
  */
-@Configuration
+//@Configuration
 public class SendExchangeConf {
     @Bean(name="message")
     public Queue queueMessage() {

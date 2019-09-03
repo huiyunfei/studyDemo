@@ -56,17 +56,18 @@ public class RedisConfigurationTest {
                 @Override
                 public void run() {
                     System.out.println("thread in ..."+Thread.currentThread().getName());
-                    boolean flag= RedisLock.lock("lock:timer", uuid,redisTemplate1);
+                    boolean flag= RedisLock.lock("lock:timer2", uuid,redisTemplate1);
                     //Boolean flag = redisTemplate1.opsForValue().setIfAbsent("lock:timer", uuid, 3000, TimeUnit.MILLISECONDS);//1
                     System.out.println(Thread.currentThread().getName()+"开启锁："+flag);
                     if(flag){
                         System.out.println(Thread.currentThread().getName()+"正常执行");
+
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        boolean result=RedisLock.unlock("lock:timer",uuid,redisTemplate1,redisScript);
+                        boolean result=RedisLock.unlock("lock:timer2",uuid,redisTemplate1,redisScript);
                         //Long result = redisTemplate1.execute(redisScript, Arrays.asList("lock:timer",uuid));
                         System.out.println(Thread.currentThread().getName()+"释放锁："+result);
                     }else{
@@ -76,6 +77,10 @@ public class RedisConfigurationTest {
             });
 
         }
+
+        redisTemplate1.opsForValue().set("test","yunfei222");
+        System.out.println("get value:"+redisTemplate1.opsForValue().get("test"));
+
     }
 
 
