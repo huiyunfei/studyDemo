@@ -1,5 +1,8 @@
 package com.example.lock.ReentrantLock;
 
+import java.io.IOException;
+import java.nio.channels.Selector;
+
 /**
  *@author Mark老师   享学课堂 https://enjoy.ke.qq.com 
  *
@@ -27,14 +30,10 @@ public class TestCond {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        for(int i=0;i<3;i++){
-            new CheckSite().start();
+        try {
+            Selector s= Selector.open();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        for(int i=0;i<3;i++){
-            new CheckKm().start();
-        }
-
-        Thread.sleep(1000);
-        express.changeKm();//快递里程变化
     }
 }
