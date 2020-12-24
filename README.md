@@ -42,3 +42,11 @@ java代理模式
 
 **com.example.rabbitmq**
 springboot集成rabbitmq并简单实现三种模式的使用示例
+**com.example.rabbitmq2**
+项目中实战使用方法
+
+
+shardingjdbc-dxfl是后端代码使用Sharding-JDBC实现mysql读写分离。mysql配置好db0主数据库，db1 db2两台从数据库，增删改主数据库从数据库会复制主数据库信息
+save方法直接走主数据库，select方法走从数据库。MasterSlaveLoadBalanceStrategyType设置轮训的方式读取数据库。
+
+shardingjdbc-fkfb是分库分表
