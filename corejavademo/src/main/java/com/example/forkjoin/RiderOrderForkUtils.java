@@ -1,8 +1,5 @@
 package com.example.forkjoin;
 
-import com.fhgl.middleware.mapper.ShopOrderMapper;
-import com.fhgl.middleware.modal.RiderOrderInfoDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -31,12 +28,12 @@ public class RiderOrderForkUtils extends RecursiveTask<List<RiderOrderInfoDTO>> 
     public RiderOrderForkUtils() {
     }
 
-    private static ShopOrderMapper shopOrderMapper;
-
-    @Autowired
-    public void setShopOrderMapper(ShopOrderMapper shopOrderMapper) {
-        RiderOrderForkUtils.shopOrderMapper = shopOrderMapper;
-    }
+//    private static ShopOrderMapper shopOrderMapper;
+//
+//    @Autowired
+//    public void setShopOrderMapper(ShopOrderMapper shopOrderMapper) {
+//        RiderOrderForkUtils.shopOrderMapper = shopOrderMapper;
+//    }
 
     @Override
     protected List<RiderOrderInfoDTO> compute() {
